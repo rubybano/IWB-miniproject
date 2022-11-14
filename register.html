@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <title>Form Validation</title>
+ <meta name="keywords" content="example, JavaScript Form Validation,
+Sample registration form" />
+ <style>
+body{
+    background-color: #66b2ff;
+}
+ h1 {
+ margin-left: 45px;
+ }
+ form li {
+ list-style: none;
+ margin-bottom: 5px;
+ }
+ form ul li label {
+ float: left;
+ clear: left;
+ width: 100px;
+ text-align: left;
+ margin-right: 10px;
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size: 14px;
+ }
+ form ul li input,
+ select,
+ span {
+ float: left;
+ margin-bottom: 10px;
+ background-color: white;
+ }
+ form textarea {
+ float: left;
+ width: 350px;
+ height: 150px;
+ background-color: white;
+ margin-bottom: 10px;
+ }
+ [type="submit"] {
+ clear: left;
+ margin: 20px 0 0 230px;
+ font-size: 18px
+ }
+ p {
+ margin-left: 70px;
+ font-weight: bold;
+ }
+ </style>
+ <script>
+ function formValidation() {
+ var name = document.registration.name;
+ var uadd = document.registration.addr;
+ var ucountry = document.registration.country;
+ var umsex = document.registration.msex;
+ var ufsex = document.registration.fsex;
+ var age = document.registration.age;
+ if (name == "" || name == null) {
+ alert("Enter The Name");
+ return false;
+ }
+ if (age > 200 || age < 1) {
+ alert("The age must be a number between 1 and 200");
+ return false;
+ }
+ if (validsex(umsex, ufsex)) { }
+ if (validadress()) { }
+ if (countryselect(ucountry)) { }
+ return false;
+ }
+ function validadress() {
+ var a = document.form.address.value;
+ if (a == "") {
+ alert("please Enter the details");
+ document.form.address.focus();
+ return false;
+ }
+ if ((a.length < 20) || (a.length > 100)) {
+ alert(" Your textarea must be 20 to 100 characters");
+ document.form.address.select();
+ return false;
+ }
+ }
+ function countryselect(ucountry) {
+ if (ucountry.value == "Default") {
+ alert('Select your country from the list');
+ ucountry.focus();
+ return false;
+ }
+ else {
+ return true;
+ }
+ }
+ function validage(age) {
+ if (isNaN(age) || age < 1 || age > 200) {
+ alert("The age must be a number between 1 and 200");
+ return false;
+ }
+ return true;
+ }
+ function validsex(umsex, ufsex) {
+ x = 0;
+ if (umsex.checked) {
+ x++;
+ } if (ufsex.checked) {
+ x++;
+ }
+ if (x == 0) {
+ alert('Select Male/Female');
+ umsex.focus();
+ return false;
+ }
+ else {
+ alert('Form Succesfully Submitted');
+ window.location.reload()
+ return true;
+ }
+ }
+ </script>
+</head>
+<body>
+ <h1>Registration Form</h1>
+ <form name='registration' onSubmit="return formValidation();">
+ <ul>
+ <li><label for="username">Name:</label></li>
+ <li><input type="text" name="username" size="50" pattern="[A-Zaz]{1,20}" /></li>
+ <br>
+ <li><label for="age">Age:</label></li>
+ <li><input type="number" name="age" /></li>
+ <br>
+ <li><label for="country">Country:</label></li>
+ <li>
+ <select name="country">
+ <option selected="" value="Default">(Please select a
+country)</option>
+ <option value="AF">Australia</option>
+ <option value="AL">Canada</option>
+ <option value="DZ">India</option>
+ <option value="AS">Russia</option>
+ <option value="AD">USA</option>
+ </select>
+ </li>
+ <br>
+ <br>
+ <li><label for="State">State:</label></li>
+ <li>
+ <select name="State">
+ <option selected="" value="Default">(Please select a
+state)</option>
+ <option value="AF">West Bengal</option>
+ <option value="AL">Andhra Pradesh</option>
+ <option value="DZ">Odisha</option>
+ <option value="AS">Tamil Nadu</option>
+ <option value="AD">Maharashtra</option>
+ </select>
+ </li>
+ <br>
+ <li><label id="gender">Sex:</label></li>
+ <li><input type="radio" name="msex" value="Male"
+/><span>Male</span></li>
+ <li><input type="radio" name="fsex" value="Female"
+/><span>Female</span></li>
+ <br>
+ <li><label for="desc">Address:</label></li>
+ <li><textarea name="desc" id="desc"></textarea></li>
+ <br>
+ <li><input type="submit" name="submit" value="Submit" /></li>
+ </ul>
+ </form>
+</body>
+</html> 
