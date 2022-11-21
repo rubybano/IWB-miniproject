@@ -93,20 +93,20 @@ input[type="radio"]{
   user-select: none;
 }
 .wrapper .form-container{
-  width: 100%;
-  overflow: hidden;
+  width: 300px;
+  
 }
 .form-container .form-inner{
   display: flex;
   width: 200%;
 }
 .form-container .form-inner form{
-  width: 50%;
+  width: 300px;
   transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 .form-inner form .field{
   height: 50px;
-  width: 100%;
+  width: 300px;
   margin-top: 20px;
 }
 .form-inner form .field input{
